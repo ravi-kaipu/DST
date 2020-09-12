@@ -24,31 +24,30 @@ void add_entry(slist **head, int value) {
 }
 
 slist * search_element(slist *head, int value) {
-    slist *walk = head;
-    while ((walk != NULL) && (walk->data != value))
-        walk = walk->next;
-    return walk;
+	slist *walk = head;
+    	while ((walk != NULL) && (walk->data != value))
+        	walk = walk->next;
+    	return walk;
 }
+
 void remove_entry(slist **head, int value) {
 	slist **walk = head;
-    slist *entry = search_element(*head, value);
-    if (entry == NULL)
-        return;
+    	slist *entry = search_element(*head, value);
+    	if (entry == NULL)
+        	return;
 
-	while (*walk != entry) {
+	while (*walk != entry)
 		walk = &(*walk)->next;
-    }
 
 	*walk = entry->next;
-    printf("Remove %d from list\n", value);
-
+    	printf("Remove %d from list\n", value);
 }
 
 void print_list(slist *head) {
 	if (head == NULL)
 		return;
 
-    printf("\nSingle linked list:\n   ");
+	printf("\nSingle linked list:\n   ");
 	while (head->next != NULL) {
 		printf("%d ->", head->data);
 		head = head->next;
@@ -62,30 +61,30 @@ int main(){
 	int value;
 
 	for(;;) {
-        printf("\nOptions:\n");
-        printf("1. Insert element to list\n");
-        printf("2. Remove element to list\n");
-        printf("3. Exit\n");
+        	printf("\nOptions:\n");
+        	printf("1. Insert element to list\n");
+        	printf("2. Remove element to list\n");
+        	printf("3. Exit\n");
 
-        printf("Enter Option: ");
-        scanf("%d", &option);
+        	printf("Enter Option: ");
+        	scanf("%d", &option);
 
-        switch(option) {
-            case 1:
-                printf("Enter value: ");
-                scanf("%d", &value);
-                add_entry(&list, value);
-                print_list(list);
-                break;
-            case 2:
-                printf("Enter value: ");
-                scanf("%d", &value);
-                remove_entry(&list, value);
-                print_list(list);
-                break;
-            case 3:
-                exit(0);
-        }
+        	switch(option) {
+            		case 1:
+                		printf("Enter value: ");
+                		scanf("%d", &value);
+                		add_entry(&list, value);
+                		print_list(list);
+                		break;
+            		case 2:
+                		printf("Enter value: ");
+                		scanf("%d", &value);
+                		remove_entry(&list, value);
+                		print_list(list);
+                		break;
+            		case 3:
+                		exit(0);
+        	}
 	}
 
 	return 0;
