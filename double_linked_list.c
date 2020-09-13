@@ -5,19 +5,19 @@ typedef struct node {
 	int data;
 	struct node *next;
 	struct node *prev;
-}slist;
+}dlist;
 
-slist *alloc_node(int value) {
-	slist *tmp = (slist *)malloc(sizeof(slist));
+dlist *alloc_node(int value) {
+	dlist *tmp = (dlist *)malloc(sizeof(dlist));
 	tmp->data = value;
 	tmp->next = NULL;
 	tmp->prev = NULL;
 	return tmp;
 }
 
-void add_entry(slist **head, int value) {
-	slist **walk = head;
-	slist *parent = NULL;
+void add_entry(dlist **head, int value) {
+	dlist **walk = head;
+	dlist *parent = NULL;
 
 	while (*walk != NULL) {
 		parent = *walk;
@@ -29,16 +29,16 @@ void add_entry(slist **head, int value) {
 	printf("Added %d to list\n", value);
 }
 
-slist * search_element(slist *head, int value) {
-	slist *walk = head;
+dlist * search_element(dlist *head, int value) {
+	dlist *walk = head;
     	while ((walk != NULL) && (walk->data != value))
         	walk = walk->next;
     	return walk;
 }
 
-void remove_entry(slist **head, int value) {
-	slist **walk = head;
-    	slist *entry = search_element(*head, value);
+void remove_entry(dlist **head, int value) {
+	dlist **walk = head;
+    	dlist *entry = search_element(*head, value);
     	if (entry == NULL)
         	return;
 
@@ -50,11 +50,11 @@ void remove_entry(slist **head, int value) {
     	printf("Remove %d from list\n", value);
 }
 
-void print_list(slist *head) {
+void print_list(dlist *head) {
 	if (head == NULL)
 		return;
 
-	printf("\nSingle linked list:\n   ");
+	printf("\nDouble linked list:\n   ");
 	while (head->next != NULL) {
 		printf("%d ->", head->data);
 		head = head->next;
@@ -63,7 +63,7 @@ void print_list(slist *head) {
 }
 
 int main(){
-	slist *list = NULL;
+	dlist *list = NULL;
 	int option;
 	int value;
 
